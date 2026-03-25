@@ -1,0 +1,309 @@
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>丝韵蜀绣 · 蜀绣文化征集</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+
+    body {
+      background: #f7f5f2;
+      color: #333;
+      overflow-x: hidden;
+      background-image: linear-gradient(to bottom, #f0ebe5, #f7f5f2);
+    }
+
+    /* 页面容器 */
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 60px;
+    }
+
+    /* 开场封面 */
+    .cover {
+      width: 100%;
+      height: 100vh;
+      background: url(https://picsum.photos/id/1036/1200/2400) center/cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 1.2s ease;
+    }
+    .cover::after {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.45);
+    }
+    .cover * { position: relative; z-index: 2; }
+    .cover h1 {
+      font-size: 32px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+    .cover p {
+      font-size: 16px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+    }
+    .enter-btn {
+      padding: 12px 36px;
+      background: #9a7e72;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .enter-btn:hover { background: #7d665c; }
+
+    /* 主体内容 */
+    .main {
+      padding: 24px;
+      display: none;
+    }
+    .title {
+      text-align: center;
+      font-size: 24px;
+      color: #5a473f;
+      margin: 20px 0;
+      position: relative;
+    }
+    .title::after {
+      content: "";
+      width: 60px;
+      height: 2px;
+      background: #b4988c;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* 卡片切换 */
+    .tab-box {
+      display: flex;
+      gap: 10px;
+      margin: 30px 0;
+    }
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      background: #eae2dd;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .tab.active {
+      background: #9a7e72;
+      color: #fff;
+    }
+
+    /* 表单面板 */
+    .panel {
+      display: none;
+      background: #fff;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 30px;
+    }
+    .panel.show { display: block; }
+    .panel h3 {
+      color: #5a473f;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    .form-item {
+      margin-bottom: 16px;
+    }
+    .form-item label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #666;
+    }
+    .form-item input,
+    .form-item textarea,
+    .form-item select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+    .form-item textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: #9a7e72;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .submit-btn:active { background: #7d665c; }
+
+    /* 活动介绍 */
+    .intro {
+      line-height: 1.8;
+      color: #555;
+      font-size: 15px;
+      margin: 20px 0;
+      text-align: justify;
+    }
+
+    /* 动画 */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* 底部 */
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #999;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <!-- 封面 -->
+  <div class="cover" id="cover">
+    <h1>清明寄思 · 绣韵传情</h1>
+    <p>蜀绣非遗文化作品征集活动</p >
+    <button class="enter-btn" onclick="showMain()">进入活动</button>
+  </div>
+
+  <!-- 主体 -->
+  <div class="main" id="main">
+    <h2 class="title">蜀绣文化征集</h2>
+    <div class="intro">
+      本次活动以清明为主题，结合国家级非物质文化遗产蜀绣，面向喜爱传统文化、热衷手工DIY、关注非遗传承的女性群体，注重亲子文化教育、愿意带孩子体验传统技艺的亲子家庭，本地国风爱好者、手工社群成员。
+      支持线上报名、线下体验预约、作品投稿参与评选，用一针一线传承东方美学。
+    </div>
+
+    <!-- 选项卡 -->
+    <div class="tab-box">
+      <div class="tab active" onclick="switchTab(1)">线上报名</div>
+      <div class="tab" onclick="switchTab(2)">线下预约</div>
+      <div class="tab" onclick="switchTab(3)">作品投稿</div>
+    </div>
+
+    <!-- 报名 -->
+    <div class="panel show" id="panel1">
+      <h3>线上报名</h3>
+      <div class="form-item">
+        <label>姓名</label>
+        <input type="text" placeholder="请输入您的姓名">
+      </div>
+      <div class="form-item">
+        <label>联系电话</label>
+        <input type="text" placeholder="请输入手机号">
+      </div>
+      <div class="form-item">
+        <label>身份</label>
+        <select>
+          <option>刺绣爱好者</option>
+          <option>专业从业者</option>
+          <option>学生</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <button class="submit-btn" onclick="msg('报名成功')">提交报名</button>
+    </div>
+
+    <!-- 预约 -->
+    <div class="panel" id="panel2">
+      <h3>线下体验预约</h3>
+      <div class="form-item">
+        <label>预约日期（4月4日-4月6日）</label>
+        <input type="date">
+      </div>
+      <div class="form-item">
+        <label>预约时段</label>
+        <select>
+          <option>上午 09:00-11:30</option>
+          <option>下午 14:00-17:00</option>
+          <option>晚上 18:30-20:30</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label>参与人数</label>
+        <input type="number" min="1" value="1">
+      </div>
+      <button class="submit-btn" onclick="msg('预约成功')">确认预约</button>
+    </div>
+
+    <!-- 投稿 -->
+    <div class="panel" id="panel3">
+      <h3>作品投稿</h3>
+      <div class="form-item">
+        <label>作品名称</label>
+        <input type="text" placeholder="请输入作品名称">
+      </div>
+      <div class="form-item">
+        <label>作品介绍</label>
+        <textarea placeholder="简述创作理念、尺寸、材质等"></textarea>
+      </div>
+      <div class="form-item">
+        <label>上传作品图片</label>
+        <input type="file" accept="image/*">
+      </div>
+      <button class="submit-btn" onclick="msg('投稿成功')">提交作品</button>
+    </div>
+  </div>
+
+  <div class="footer">丝韵蜀绣 · 蜀绣非遗文化活动 © 2026</div>
+</div>
+
+<script>
+  // 显示主体
+  function showMain() {
+    document.getElementById('cover').style.display = 'none';
+    document.getElementById('main').style.display = 'block';
+  }
+
+  // 切换面板
+  function switchTab(num) {
+    // 重置
+    document.querySelectorAll('.tab').forEach((t,i)=>{
+      t.classList.remove('active');
+      document.getElementById('panel'+(i+1)).classList.remove('show');
+    });
+    // 激活
+    document.querySelectorAll('.tab')[num-1].classList.add('active');
+    document.getElementById('panel'+num).classList.add('show');
+  }
+
+  // 提示
+  function msg(text) {
+    alert(text);
+  }
+</script>
+</body>
+</html>
